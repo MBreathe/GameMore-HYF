@@ -1,0 +1,16 @@
+.footer {
+  display: flex;
+  padding: 1rem 2rem;
+  border-top: 2px solid var(--text-color);
+}
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.buttonContainer button {
+  margin: 0 0.5rem;
+}
+.textContainer {
+  margin: auto;
+}

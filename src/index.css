@@ -1,3 +1,5 @@
+/* Setting up the basic styles */
+
 *,
 *::before,
 *::after {
@@ -5,6 +7,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+/* Setting up the root variables */
+
 :root {
   --text-color: #252423;
   --bg-color: #dad5d0;
@@ -12,6 +17,8 @@
   --secondary-color: #86c879;
   --accent-color: #c5cf6e;
 }
+
+/* Styling for the body */
 
 html {
   font-size: 100%;
@@ -24,6 +31,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
+
+/* Fonts */
 
 .inter-bold {
   font-family: "Inter", sans-serif;
@@ -57,13 +66,34 @@ body {
   font-style: italic;
 }
 
+h1 {
+  font-size: 4rem;
+}
+h2 {
+  font-size: 3rem;
+}
+p {
+  font-size: 1.5rem;
+}
+
+/* Elemental styles */
+
 button {
   background: none;
   border: 1px solid var(--text-color);
   padding: 5px 15px;
   border-radius: 5px;
-  font-size: 3rem;
+  font-size: 2rem;
   cursor: pointer;
+  color: var(--text-color);
+}
+button:hover {
+  background: var(--text-color);
+  color: var(--bg-color);
+}
+button:active {
+  transform: scale(0.95);
+  background: var(--primary-color);
   color: var(--text-color);
 }
 img {
