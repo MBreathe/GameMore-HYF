@@ -1,69 +1,66 @@
-# React + TypeScript + Vite
+# GameMore - _Video game web-app_
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+_This project is under development. Design is not yet complete._
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Static Badge](https://img.shields.io/badge/React-blue)
+![Static Badge](https://img.shields.io/badge/TypeScript-blue)
+![Static Badge](https://img.shields.io/badge/Prettier-orange)
+![Static Badge](https://img.shields.io/badge/React%2FRouter%2FDom-red)
 
-## Expanding the ESLint configuration
+## Description
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
+**Game Release Explorer** is a web application built with **React** and **TypeScript** that helps gamers discover
+upcoming video game releases. The app integrates with the **IGDB API** to provide up-to-date information on new and
+anticipated games. Users can search for titles, view detailed game information, and curate a personalized
+list of favorites for easy access to the games they’re most excited about.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Features
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+---
+
+```
+must-have:
+    responsive design
+    client-side-routing with multiple routes
+    context API and/or custom hooks
+    loading/error handlers
+    favorites page
+
+should-have:
+    nice visuals
+    animations
+    hover/active etc (basically a rich CSS)
+
+might-have:
+    localStorage
+    search-bar and capabilities to look up games
+    capability to add release dates to Google Calendar
+    loading screen and just design things
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Design
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+---
 
-export default tseslint.config([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+![Figma snippet](assets/Figma.png)
+
+### Color palette:
+
+![text-color](https://placehold.co/40x40/252423/252423.png)
+![background-color](https://placehold.co/40x40/DAD5D0/DAD5D0.png)
+![primary](https://placehold.co/40x40/BF7940/BF7940.png)
+![secondary](https://placehold.co/40x40/86C879/86C879.png)
+![accent](https://placehold.co/40x40/C5CF6E/C5CF6E.png)
+
+## Assets/Inspiration/References
+
+---
+
+[![IGDB API](https://img.shields.io/badge/IGDB-purple)](https://api-docs.igdb.com/)
+[![AnimeJS](https://img.shields.io/badge/AnimeJS-gray)](https://animejs.com/)
+[![Realtime colors](https://img.shields.io/badge/Realtime_Colors-blue)](https://www.realtimecolors.com/)
+[![Figma](https://img.shields.io/badge/Figma-white)](https://www.figma.com/)
