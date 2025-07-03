@@ -4,10 +4,10 @@
 
 _This project is under development. Design is not yet complete._
 
-![Static Badge](https://img.shields.io/badge/React-blue)
-![Static Badge](https://img.shields.io/badge/TypeScript-blue)
-![Static Badge](https://img.shields.io/badge/Prettier-orange)
-![Static Badge](https://img.shields.io/badge/React%2FRouter%2FDom-red)
+![Static Badge](https://img.shields.io/badge/React-252423?logo=react)
+![Static Badge](https://img.shields.io/badge/TypeScript-252423?logo=typescript)
+![Static Badge](https://img.shields.io/badge/Prettier-252423?logo=prettier)
+![Static Badge](https://img.shields.io/badge/React%2FRouter%2FDom-252423?logo=reactrouter)
 
 ## Description
 
@@ -60,7 +60,7 @@ might-have:
 
 ---
 
-[![IGDB API](https://img.shields.io/badge/IGDB-purple)](https://api-docs.igdb.com/)
-[![AnimeJS](https://img.shields.io/badge/AnimeJS-gray)](https://animejs.com/)
-[![Realtime colors](https://img.shields.io/badge/Realtime_Colors-blue)](https://www.realtimecolors.com/)
-[![Figma](https://img.shields.io/badge/Figma-white)](https://www.figma.com/)
+[![IGDB API](https://img.shields.io/badge/IGDB-252423?logo=igdb)](https://api-docs.igdb.com/)
+[![Figma](https://img.shields.io/badge/Figma-252423?logo=figma)](https://www.figma.com/)
+[![AnimeJS](https://img.shields.io/badge/AnimeJS-252423)](https://animejs.com/)
+[![Realtime colors](https://img.shields.io/badge/Realtime_Colors-252423)](https://www.realtimecolors.com/)
