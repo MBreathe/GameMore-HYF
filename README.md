@@ -25,7 +25,7 @@ list of favorites for easy access to the games they’re most excited about.
 ```
 must-have:
     homepage with most anticipated game releases
-    serchbar and top-rated games
+    searchbar and top-rated games
     favorites page with user hand picked games
     detailed page for each video game
 
