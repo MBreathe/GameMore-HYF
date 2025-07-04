@@ -31,6 +31,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
+#root {
+  padding: 0 2rem;
+}
 
 /* Fonts */
 
@@ -99,4 +102,16 @@ button:active {
 img {
   max-width: 100%;
   display: block;
+}
+input {
+  background: none;
+  color: var(--text-color);
+  border: 2px solid var(--text-color);
+  padding: 0.5rem 1.5rem;
+  font-size: 1.5rem;
+  border-radius: 40px;
+}
+input::placeholder {
+  color: var(--text-color);
+  opacity: 0.8;
 }

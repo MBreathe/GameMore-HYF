@@ -10,7 +10,7 @@ export const FavoritesContext = createContext<FavoriteContextType | null>(null);
 export default function FavoritesContextProvider({
   children,
 }: {
-  children: JSX.Element;
+  children: JSX.Element | JSX.Element[];
 }) {
   const [favorite, setFavorite] = useState<string[]>([]);
 

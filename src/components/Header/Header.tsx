@@ -20,9 +20,14 @@ function Header() {
           alt="logo"
         />
       </Link>
-      <Link to="/favorites">
-        <Button value="Favorites" />
-      </Link>
+        <div>
+            <Link to="/">
+                <Button value="Home" />
+            </Link>
+            <Link to="/favorites">
+                <Button value="Favorites" />
+            </Link>
+        </div>
     </div>
   );
 }

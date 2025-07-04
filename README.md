@@ -4,10 +4,10 @@
 
 _This project is under development. Design is not yet complete._
 
-![Static Badge](https://img.shields.io/badge/React-blue)
-![Static Badge](https://img.shields.io/badge/TypeScript-blue)
-![Static Badge](https://img.shields.io/badge/Prettier-orange)
-![Static Badge](https://img.shields.io/badge/React%2FRouter%2FDom-red)
+![Static Badge](https://img.shields.io/badge/React-252423?logo=react)
+![Static Badge](https://img.shields.io/badge/TypeScript-252423?logo=typescript)
+![Static Badge](https://img.shields.io/badge/Prettier-252423?logo=prettier)
+![Static Badge](https://img.shields.io/badge/React%2FRouter%2FDom-252423?logo=reactrouter)
 
 ## Description
 
@@ -24,29 +24,32 @@ list of favorites for easy access to the games they’re most excited about.
 
 ```
 must-have:
-    responsive design
-    client-side-routing with multiple routes
-    context API and/or custom hooks
-    loading/error handlers
-    favorites page
+    homepage with most anticipated game releases
+    serchbar and top-rated games
+    favorites page with user hand picked games
+    detailed page for each video game
 
 should-have:
-    nice visuals
-    animations
-    hover/active etc (basically a rich CSS)
-
-might-have:
-    localStorage
-    search-bar and capabilities to look up games
     capability to add release dates to Google Calendar
-    loading screen and just design things
+    animations
+
+could-have:
+    about and contact pages
+    ability to leave feedback for devs
+
 ```
 
 ## Design
 
 ---
 
+I'm going for a minimalistic design that I have been doing for some of my other projects. Inspiration for the
+features came from the [IGDB](https://www.igdb.com/) website. Color palette inspiration:
+[AnimeJS](https://animejs.com/) and [Realtime Colors](https://www.realtimecolors.com/).
+Design is done in [Figma](https://www.figma.com/).
+
 ![Figma snippet](assets/Figma.png)
+![Figma snippet](assets/Figma%202.png)
 
 ### Color palette:
 
@@ -60,7 +63,7 @@ might-have:
 
 ---
 
-[![IGDB API](https://img.shields.io/badge/IGDB-purple)](https://api-docs.igdb.com/)
-[![AnimeJS](https://img.shields.io/badge/AnimeJS-gray)](https://animejs.com/)
-[![Realtime colors](https://img.shields.io/badge/Realtime_Colors-blue)](https://www.realtimecolors.com/)
-[![Figma](https://img.shields.io/badge/Figma-white)](https://www.figma.com/)
+[![IGDB API](https://img.shields.io/badge/IGDB-252423?logo=igdb)](https://api-docs.igdb.com/)
+[![Figma](https://img.shields.io/badge/Figma-252423?logo=figma)](https://www.figma.com/)
+[![AnimeJS](https://img.shields.io/badge/AnimeJS-252423)](https://animejs.com/)
+[![Realtime colors](https://img.shields.io/badge/Realtime_Colors-252423)](https://www.realtimecolors.com/)

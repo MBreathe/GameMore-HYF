@@ -2,6 +2,9 @@
   display: flex;
   padding: 1rem 2rem;
   border-top: 2px solid var(--text-color);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
 .buttonContainer {
   display: flex;

@@ -1,8 +1,7 @@
 import { useState } from "react";
-import Header from "../components/Header/Header.tsx";
-import Footer from "../components/Footer/Footer.tsx";
 import Loading from "../components/Loading/Loading.tsx";
-import ScrollToTopButton from "../components/ScrollToTopButton.tsx";
+import Searchbar from "../components/Searchbar/Searchbar.tsx";
+import Title from "../components/Title.tsx";
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -13,14 +12,10 @@ function Home() {
 
   return (
     <>
-      <Header />
-      <h1 className="inter-bold" style={{ margin: "2rem" }}>
-        Most anticipated
-      </h1>
+        <Searchbar />
+      <Title text="Most anticipated" />
       {loading && <Loading />}
-      <p style={{ marginBottom: "5000px" }}>Lorem ipsum</p>
-      <ScrollToTopButton />
-      <Footer />
+        <Title text="Top rated" />
     </>
   );
 }
