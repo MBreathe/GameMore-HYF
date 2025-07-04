@@ -9,8 +9,8 @@ import SuggestionCarousel from "../components/SuggestionCarousel/SuggestionCarou
 function Home() {
   const [loading, setLoading] = useState(true);
 
-  const clientId = "b3stp09cuksltcadr0w66x1kx57t93";
-  const secret = "jcetem00addbzrknr4kv6io6t64xz0";
+  const clientId = "";
+  const secret = "";
   const url = `https://id.twitch.tv/oauth2/token?client_id=${clientId}&client_secret=${secret}&grant_type=client_credentials`;
   const options = useMemo(() => ({
       method: "POST"
