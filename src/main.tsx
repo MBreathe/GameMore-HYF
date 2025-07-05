@@ -8,6 +8,7 @@ import FavoritesContextProvider from "./context/FavoritesContext.tsx";
 import Header from "./components/Header/Header.tsx";
 import Footer from "./components/Footer/Footer.tsx";
 import ScrollToTopButton from "./components/ScrollToTopButton.tsx";
+import About from "./pages/About.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -17,6 +18,7 @@ createRoot(document.getElementById("root")!).render(
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
           </Routes>
           <ScrollToTopButton />
           <Footer />

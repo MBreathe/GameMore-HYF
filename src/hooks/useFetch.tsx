@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { StatusContext } from "../context/StatusContext.tsx";
 
-function useFetch(url: string, options?: object) {
-  const [data, setData] = useState(null);
+function useFetch<T = unknown>(url: string, options?: object) {
+  const [data, setData] = useState<T | null>(null);
   const context = useContext(StatusContext);
   if (!context) {
     throw new Error("useFetch must be used within a StatusContextProvider");

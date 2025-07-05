@@ -1,38 +1,47 @@
-import { useState, useEffect, useMemo } from "react";
+import { useEffect, useMemo, useContext } from "react";
+import { StatusContext } from "../context/StatusContext.tsx";
 import useFetch from "../hooks/useFetch.tsx";
-import Loading from "../components/Loading/Loading.tsx";
 import Searchbar from "../components/Searchbar/Searchbar.tsx";
 import Title from "../components/Title.tsx";
 import CountdownPanel from "../components/CountdownPanel/CountdownPanel.tsx";
 import SuggestionCarousel from "../components/SuggestionCarousel/SuggestionCarousel.tsx";
 
-function Home() {
-  const [loading, setLoading] = useState(true);
+interface AuthRes {
+    access_token: string;
+    expires_in: number;
+    token_type: string;
+}
 
-  const clientId = "";
-  const secret = "";
+function Home() {
+  const context = useContext(StatusContext);
+  if (!context) {
+      throw new Error("Home-page must be used within a StatusContextProvider");
+  }
+  const { setToken, setError } = context;
+
+  const clientId = import.meta.env.VITE_CLIENT_ID;
+  const secret = import.meta.env.VITE_CLIENT_SECRET;
   const url = `https://id.twitch.tv/oauth2/token?client_id=${clientId}&client_secret=${secret}&grant_type=client_credentials`;
   const options = useMemo(() => ({
       method: "POST"
   }), []);
-
   const { data } = useFetch(url, options);
 
   useEffect(() => {
-      console.log(data);
-  }, [data]);
+      if (!data) {
+          setError("Error while fetching token");
+          return;
+      }
+      const { access_token } = data as AuthRes;
+      setToken(access_token);
 
-  setTimeout(() => {
-    setLoading(false);
-  }, 5000);
-
+  }, [data, setToken, setError]);
 
   return (
     <>
       <Searchbar />
       <Title text="Most anticipated" />
         <CountdownPanel />
-      {loading && <Loading />}
       <Title text="Top rated" />
         <SuggestionCarousel />
     </>

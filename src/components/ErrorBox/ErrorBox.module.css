@@ -1,0 +1,10 @@
+.container {
+    border: 5px solid var(--error-color);
+    width: max-content;
+    max-width: 70%;
+    padding: 1rem;
+    margin: 1rem auto;
+}
+.error {
+    margin-bottom: 1rem;
+}
