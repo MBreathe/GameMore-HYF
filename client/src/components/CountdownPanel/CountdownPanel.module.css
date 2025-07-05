@@ -1,0 +1,25 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 2rem;
+    margin: 1rem 0 5rem 0;
+}
+.cardContainer {
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid var(--text-color);
+}
+.textContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+.thumbnail {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100px;
+    border-left: 2px solid var(--text-color);
+    object-fit: cover;
+}
