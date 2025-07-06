@@ -20,11 +20,13 @@ type Game = {
 }
 
 function CountdownPanel() {
+    const [error, setError] = useState<string | null>(null);
+    const [loading, setLoading] = useState(false);
     const context = useContext(StatusContext);
     if (!context) {
         throw new Error("CountdownPanel must be used within a StatusContextProvider");
     }
-    const { token, loading, setLoading, error, setError } = context;
+    const { token } = context;
 
     const [data, setData] = useState<Game[] | null>(null);
 

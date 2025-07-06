@@ -1,11 +1,7 @@
 import { createContext, type JSX, useState } from "react";
 
 export type StatusContextType = {
-  loading: boolean;
-  error: string | null;
   token: string | null;
-  setLoading: (loading: boolean) => void;
-  setError: (error: string | null) => void;
   setToken: (token: string | null) => void;
 };
 
@@ -16,13 +12,11 @@ export default function StatusContextProvider({
 }: {
   children: JSX.Element;
 }) {
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
   const [token, setToken] = useState<string | null>(null);
 
   return (
     <StatusContext.Provider
-      value={{ loading, error, token, setLoading, setError, setToken }}
+      value={{  token, setToken }}
     >
       {children}
     </StatusContext.Provider>

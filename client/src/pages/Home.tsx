@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import {useEffect, useContext, useState} from "react";
 import { StatusContext } from "../context/StatusContext.tsx";
 import Searchbar from "../components/Searchbar/Searchbar.tsx";
 import Title from "../components/Title.tsx";
@@ -8,11 +8,12 @@ import fetchAuth from "../services/fetchAuth.ts";
 
 
 function Home() {
+    const [error, setError] = useState<string | null>("");
   const context = useContext(StatusContext);
   if (!context) {
       throw new Error("Home-page must be used within a StatusContextProvider");
   }
-  const { setToken, setError } = context;
+  const { setToken } = context;
 
   useEffect(() => {
       fetchAuth(setError, setToken);

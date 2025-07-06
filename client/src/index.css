@@ -74,10 +74,13 @@ h1 {
   font-size: 4rem;
 }
 h2 {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
 }
 p {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+}
+li {
+  font-size: 1.7rem;
 }
 
 /* Elemental styles */
@@ -115,4 +118,11 @@ input {
 input::placeholder {
   color: var(--text-color);
   opacity: 0.8;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: var(--text-color);
 }
