@@ -2,11 +2,12 @@ import CountdownCard from "./CountdownCard.tsx";
 import style from "./CountdownPanel.module.css";
 import {useContext, useEffect, useState} from "react";
 import {StatusContext} from "../../context/StatusContext.tsx";
-import dateCalc from "../../utils/dateCalc.ts";
+import {timer} from "../../utils/dateCalc.ts";
 import imgUrl from "../../utils/imgUrl.ts";
 import ErrorBox from "../ErrorBox/ErrorBox.tsx";
 import Loading from "../Loading/Loading.tsx";
 import fetcher from "../../utils/fetcher.ts";
+import {Link} from "react-router-dom";
 
 type Game = {
     id: number;
@@ -70,12 +71,15 @@ function CountdownPanel() {
         <div className={style.wrapper}>
             {data && data.map((game: Game) => {
                 return (
-                    <CountdownCard
-                        key={game.id}
-                        text={game.name}
-                        date={dateCalc(game.first_release_date) || "date not found"}
-                        img={game.cover ? imgUrl(game.cover.url, "t_720p") : "https://placehold.co/540x720"}
-                    />
+                    <div key={game.id}>
+                        <Link to={`/games/${game.id}`}>
+                        <CountdownCard
+                            text={game.name}
+                            date={timer(game.first_release_date) || "date not found"}
+                            img={game.cover ? imgUrl(game.cover.url, "t_720p") : "https://placehold.co/540x720"}
+                        />
+                        </Link>
+                    </div>
                 )
             })}
         </div>

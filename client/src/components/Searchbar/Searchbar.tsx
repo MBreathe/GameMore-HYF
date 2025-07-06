@@ -1,33 +1,40 @@
-import {useEffect, useState, useContext} from "react";
+import {useEffect, useState, useContext, useMemo} from "react";
 import Suggestions from "./Suggestions.tsx";
 import style from "./Searchbar.module.css";
 import { StatusContext } from "../../context/StatusContext.tsx";
-import type {GameObj} from "./Suggestions.tsx";
-import fetchSearch from "../../services/fetchSearch.ts";
+import useFetch from "../../hooks/useFetch.ts";
 
 function Searchbar() {
-    const [error, setError] = useState<string | null>("");
-    const [loading, setLoading] = useState(false);
-  const [input, setInput] = useState("");
-  const [results, setResults] = useState<GameObj[]>([]);
+    const [input, setInput] = useState("");
+    const [debouncedInput, setDebouncedInput] = useState("");
 
-  const context = useContext(StatusContext);
-  if (!context) {
-      throw new Error("Searchbar must be used within a StatusContextProvider");
-  }
-  const { token } = context;
+    const context = useContext(StatusContext);
+    if (!context) {
+        throw new Error("Searchbar must be used within a StatusContextProvider");
+    }
+    const { token } = context;
 
-  useEffect(() => {
-      const timeout = setTimeout(() => {
-          if (!input || input.length < 3) {
-              setResults([]);
-              return;
-          }
-          fetchSearch(input, token, setResults, setError, setLoading);
-      }, 500);
+    useEffect(() => {
+        const timeout = setTimeout(() =>
+            setDebouncedInput(input), 500);
+        return () => clearTimeout(timeout);
+    }, [input]);
 
-      return () => clearTimeout(timeout);
-  }, [input, token]);
+    const greenlight = token && debouncedInput.length > 3;
+    const options = useMemo(() => (
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                token: token,
+                query: debouncedInput.toLowerCase()
+            })
+        }
+    ), [debouncedInput, token]);
+
+    const { data, loading, error } = useFetch("http://localhost:3000/api/games/search", greenlight ? token : null, options);
 
   return (
     <div className={style.wrapper}>
@@ -39,7 +46,7 @@ function Searchbar() {
             placeholder="Search"
             className={style.searchbar + " roboto-normal"}
         />
-      <Suggestions results={results} />
+      <Suggestions results={data} />
     </div>
   );
 }

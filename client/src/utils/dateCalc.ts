@@ -1,5 +1,5 @@
 
-function dateCalc(timestamp: number) {
+export function timer(timestamp: number) {
     const futureDate = new Date(timestamp * 1000);
     const now = new Date();
 
@@ -33,4 +33,12 @@ function dateCalc(timestamp: number) {
     }
 }
 
-export default dateCalc;
+export function date(timestamp: number) {
+    const futureDate = new Date(timestamp * 1000);
+
+    const dayRelease = futureDate.getDate().toString().padStart(2, "0");
+    const monthRelease = (futureDate.getMonth() + 1).toString().padStart(2, "0");
+    const yearRelease = futureDate.getFullYear().toString().slice(-2);
+
+    return `${dayRelease}/${monthRelease}/${yearRelease}`;
+}

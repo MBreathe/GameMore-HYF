@@ -1,51 +1,62 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState, useContext } from "react";
+import {useEffect, useContext, useMemo, useState} from "react";
 import { StatusContext } from "../context/StatusContext.tsx";
+import Title from "../components/Title.tsx";
+import GameMeta from "../components/GameMeta/GameMeta.tsx";
+import { date } from "../utils/dateCalc.ts";
+import useFetch from "../hooks/useFetch.ts";
 import fetcher from "../utils/fetcher.ts";
 
 
 function GameDetails() {
     const { id } = useParams();
-    const [details, setDetails] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+
+    const [authError, setAuthError] = useState<string | null>(null);
 
     const context = useContext(StatusContext);
     if (!context) {
         throw new Error("GameDetails must be used within a StatusContextProvider");
     }
-    const { token } = context;
+    const { token, setToken } = context;
 
     useEffect(() => {
-        async function fetchDetails(id, setError, setLoading, setDetails) {
-            setLoading(true);
-            setError(null);
-
-            const options = {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    token: token,
-                    query: id
-                })
-            }
+        const refreshToken = async () => {
             try {
-                const data = await fetcher("http://localhost:3000/api/games/details", options);
-                setDetails(data);
+                const data = await fetcher("http://localhost:3000/api/auth", { method: "POST" });
+                setToken(data.accessToken);
             } catch (e) {
-                setError(e instanceof Error ? e.message : String(e));
-                setDetails([]);
-            } finally {
-                setLoading(false);
+                setAuthError(e instanceof Error ? e.message : String(e));
             }
         }
+        if (!token || token.length === 0) {
+            refreshToken();
+        }
+    }, [setToken, token]);
 
-        fetchDetails(id, setError, setLoading, setDetails);
-    }, [id])
+    const options = useMemo(() => (
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                token: token,
+                query: id
+            })
+        }
+    ), [id, token]);
 
-    return <h1>Game Details {id}</h1>
+    const { data, loading, error } = useFetch("http://localhost:3000/api/games/details", token, options);
+
+    const details = data ? data[0] : null;
+
+    return (
+        <>
+            <Title text={details?.name} />
+            <GameMeta rating={details?.rating} releaseDate={date(details?.first_release_date)} genre={details?.genres} platform={details?.platforms} />
+        </>
+
+    )
 }
 
 export default GameDetails;

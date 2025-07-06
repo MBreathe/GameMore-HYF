@@ -15,7 +15,7 @@ async function anticipated(req: Request, res: Response) {
     const request =
         `fields name, first_release_date, cover.url, hypes;
         where first_release_date > 1751467522 & hypes != null;
-        sort hypes desc
+        sort hypes desc;
         limit 6;`
     const options = {
         method: "POST",
@@ -29,9 +29,11 @@ async function anticipated(req: Request, res: Response) {
     try {
         const data = await fetcher(url, res, options);
         res.json(data);
+        return;
     } catch (e) {
         console.error(e);
         res.status(500).send("Couldn't fetch data for anticipated games");
+        return;
     }
 }
 

@@ -1,4 +1,3 @@
-import process from "node:process";
 import fetcher from "../utils/fetcher";
 import * as dotenv from "dotenv";
 import { Request, Response } from "express";
@@ -14,7 +13,7 @@ async function search(req: Request, res: Response) {
     const url = "https://api.igdb.com/v4/search";
     const request =
         `fields name, game;
-        search ${query};
+        search "${query}";
         limit 5;`
     const options = {
         method: "POST",

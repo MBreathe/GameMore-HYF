@@ -7,14 +7,14 @@ export type GameObj = {
   name: string;
 }
 
-function Suggestions({ results }: { results: GameObj[] }) {
+function Suggestions({ results }: { results: GameObj[] | null }) {
   if (!results || results.length === 0) {
     return null;
   }
 
   return (
       <ul className={style.suggestionsContainer + " roboto-italic"}>
-        { results.map((result) => <li key={result.id}><Link to={`/games/${result.id}`} >{result.name}</Link></li>)}
+        { results.map((result) => <li key={result.id}><Link to={`/games/${result.game}`} >{result.name}</Link></li>)}
       </ul>
       );
 }

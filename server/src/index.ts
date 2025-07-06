@@ -5,6 +5,7 @@ import auth from "./controllers/auth";
 import anticipated from "./controllers/anticipated";
 import cors from "cors";
 import search from "./controllers/search";
+import gameDetails from "./controllers/gameDetails";
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.get('/', (_: Request, res: Response) => {
 app.post('/api/auth', auth);
 app.post('/api/games/anticipated', anticipated);
 app.post('/api/games/search', search);
+app.post('/api/games/details', gameDetails);
 
 const port = Number(process.env.PORT) || 3000;
 app.listen(port);
