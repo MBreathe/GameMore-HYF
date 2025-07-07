@@ -1,40 +1,43 @@
-import fetcher from "../utils/fetcher";
 import { Request, Response } from "express";
-import * as dotenv from "dotenv";
-import * as process from "node:process";
+import postReq from "./postReq";
+import httpStatusCodes from "../services/httpStatusCodes";
+import bodyCheck from "../utils/bodyCheck";
 
-dotenv.config();
+type AnticipatedObj = {
+  id: number;
+  cover: {
+    id: number;
+    url: string;
+  };
+  first_release_date: number;
+  hypes: number;
+  name: string;
+};
 
 async function anticipated(req: Request, res: Response) {
-    if (!req.body.token) {
-        res.status(400).send("No token provided");
-        return;
-    }
-    const { token } = req.body;
-    const url = "https://api.igdb.com/v4/games";
-    const request =
-        `fields name, first_release_date, cover.url, hypes;
+  const query = bodyCheck(req, res);
+  if (typeof query !== "number") {
+    res.status(httpStatusCodes.badRequest).send("Query must be a number");
+    return;
+  }
+  if (query > 10) {
+    res.status(httpStatusCodes.badRequest).send("Query must be less than 10");
+    return;
+  }
+  if (query < 2) {
+    res.status(httpStatusCodes.badRequest).send("Query must be greater than 2");
+    return;
+  }
+
+  const url = "https://api.igdb.com/v4/games";
+  const request = `fields name, first_release_date, cover.url, hypes;
         where first_release_date > 1751467522 & hypes != null;
         sort hypes desc;
-        limit 6;`
-    const options = {
-        method: "POST",
-        headers: {
-            "Content-Type": "text/plain",
-            "Authorization": "Bearer " + token,
-            "Client-ID": process.env.CLIENT_ID
-        },
-        body: request
-    }
-    try {
-        const data = await fetcher(url, res, options);
-        res.json(data);
-        return;
-    } catch (e) {
-        console.error(e);
-        res.status(500).send("Couldn't fetch data for anticipated games");
-        return;
-    }
+        limit ${query};`;
+
+  const data: AnticipatedObj[] = await postReq(res, req, url, request);
+  const filteredData = data.map(({ hypes, ...rest }) => rest);
+  res.json(filteredData);
 }
 
 export default anticipated;

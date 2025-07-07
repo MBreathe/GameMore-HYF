@@ -1,10 +1,18 @@
 .container {
-    border: 5px solid var(--error-color);
-    width: max-content;
-    max-width: 70%;
-    padding: 1rem;
-    margin: 1rem auto;
+  position: fixed;
+  bottom: 4rem;
+  left: 0.5rem;
+  background: var(--bg-color);
+  color: var(--text-color);
+  border: 2px solid var(--text-color);
+  width: max-content;
+  max-width: 70%;
+  padding: 1rem;
 }
 .error {
-    margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  display: inline-block;
+  background: var(--error-color);
+  color: var(--bg-color);
 }

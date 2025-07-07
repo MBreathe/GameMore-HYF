@@ -5,6 +5,9 @@
 .searchbar {
   width: 100%;
 }
+.loading {
+  animation: pulse 0.8s infinite;
+}
 .suggestionsContainer {
   position: absolute;
   background: var(--bg-color);
@@ -21,4 +24,16 @@
 }
 .suggestionsContainer li:hover {
   background: var(--accent-color);
+}
+
+@keyframes pulse {
+  0% {
+    background: var(--bg-color);
+  }
+  50% {
+    background: var(--accent-color);
+  }
+  100% {
+    background: var(--bg-color);
+  }
 }

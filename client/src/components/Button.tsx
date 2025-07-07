@@ -6,7 +6,7 @@ function Button({
   style,
   onMouseOver,
   onMouseOut,
-    type
+  type,
 }: {
   value: string | JSX.Element;
   onClick?: () => void;
