@@ -28,6 +28,7 @@ function FavButton({ game }: { game: number | undefined }) {
       src={src}
       alt="favorite"
       onClick={() => {
+        if (typeof game !== "number") return;
         setFavorite(
           favorite?.includes(game)
             ? favorite.filter((id) => id !== game)

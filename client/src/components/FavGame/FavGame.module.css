@@ -12,4 +12,5 @@
   background: var(--bg-color);
   bottom: 0;
   border-top: 2px solid var(--text-color);
+  width: 100%;
 }
