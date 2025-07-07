@@ -1,0 +1,15 @@
+.wrapper {
+  position: relative;
+  width: 20%;
+  border: 2px solid var(--text-color);
+}
+.wrapper:hover .tag {
+  display: block;
+}
+.tag {
+  display: none;
+  position: absolute;
+  background: var(--bg-color);
+  bottom: 0;
+  border-top: 2px solid var(--text-color);
+}

@@ -1,0 +1,12 @@
+.favButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--bg-color);
+  border-bottom: 2px solid var(--text-color);
+  border-left: 2px solid var(--text-color);
+  width: 15%;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+  max-width: 3rem;
+}

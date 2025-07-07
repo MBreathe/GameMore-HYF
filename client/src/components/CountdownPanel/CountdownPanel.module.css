@@ -5,10 +5,14 @@
   gap: 2rem;
   margin: 1rem 0 5rem 0;
 }
+.cardWrapper {
+  width: 100%;
+}
 .cardContainer {
   display: flex;
   justify-content: space-between;
   border: 2px solid var(--text-color);
+  height: 100%;
 }
 .textContainer {
   display: flex;
@@ -20,7 +24,7 @@
   max-width: 100%;
   max-height: 100%;
   aspect-ratio: 1/1;
-  width: 100px;
+  width: 10rem;
   border-left: 2px solid var(--text-color);
   object-fit: cover;
 }

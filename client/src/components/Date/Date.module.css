@@ -1,0 +1,5 @@
+.date {
+  border-top: 2px solid var(--text-color);
+  width: max-content;
+  padding-top: 0.1rem;
+}

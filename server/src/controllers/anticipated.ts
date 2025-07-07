@@ -16,6 +16,7 @@ type AnticipatedObj = {
 
 async function anticipated(req: Request, res: Response) {
   const query = bodyCheck(req, res);
+  if (!query) return;
   if (typeof query !== "number") {
     res.status(httpStatusCodes.badRequest).send("Query must be a number");
     return;
@@ -35,7 +36,7 @@ async function anticipated(req: Request, res: Response) {
         sort hypes desc;
         limit ${query};`;
 
-  const data: AnticipatedObj[] = await postReq(res, req, url, request);
+  const data: AnticipatedObj[] = await postReq(req, res, url, request);
   const filteredData = data.map(({ hypes, ...rest }) => rest);
   res.json(filteredData);
 }

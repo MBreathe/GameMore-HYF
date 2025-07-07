@@ -14,7 +14,7 @@ function Searchbar() {
   if (!context) {
     throw new Error("Searchbar must be used within a StatusContextProvider");
   }
-  const { token } = context;
+  const { token, error } = context;
 
   useEffect(() => {
     const timeout = setTimeout(() => setDebouncedInput(input), 500);
@@ -36,7 +36,7 @@ function Searchbar() {
     [debouncedInput, token],
   );
 
-  const { data, loading, error } = useFetch<SearchGame[]>(
+  const { data, loading } = useFetch<SearchGame[]>(
     "http://localhost:3000/api/games/search",
     greenlight ? token : null,
     options,

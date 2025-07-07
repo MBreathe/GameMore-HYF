@@ -6,8 +6,8 @@ import httpStatusCodes from "../services/httpStatusCodes";
 dotenv.config();
 
 async function postReq(
-  res: Response,
   req: Request,
+  res: Response,
   url: string,
   request: string,
 ) {

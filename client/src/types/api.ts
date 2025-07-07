@@ -22,3 +22,13 @@ export type SearchGame = {
   game: number;
   name: string;
 };
+export type MetaGame = {
+  rating: number | undefined;
+  releaseDate: string | null;
+  genre: number[] | undefined;
+  platform: number[] | undefined;
+};
+export type PosterGame = {
+  game: number;
+  url: string;
+};

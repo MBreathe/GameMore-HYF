@@ -48,16 +48,13 @@ type GameDetailsObj = {
 
 async function gameDetails(req: Request, res: Response) {
   const query = bodyCheck(req, res);
-  if (typeof query !== "number") {
-    res.status(httpStatusCodes.badRequest).send("Query must be a number");
-    return;
-  }
+  if (!query) return;
 
   const url = "https://api.igdb.com/v4/games";
   const request = `fields *;
         where id = ${query};`;
 
-  const data: GameDetailsObj[] = await postReq(res, req, url, request);
+  const data: GameDetailsObj[] = await postReq(req, res, url, request);
   const filteredData = data.map(
     ({
       id,
@@ -80,7 +77,7 @@ async function gameDetails(req: Request, res: Response) {
       summary,
     }),
   );
-  res.json(filteredData);
+  res.json(filteredData[0]);
 }
 
 export default gameDetails;

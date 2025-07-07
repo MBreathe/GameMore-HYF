@@ -1,5 +1,5 @@
 import SubTitle from "../SubTitle.tsx";
-import Date from "../Date.tsx";
+import Date from "../Date/Date.tsx";
 import style from "./CountdownPanel.module.css";
 
 function CountdownCard({
@@ -9,8 +9,10 @@ function CountdownCard({
 }: {
   text: string;
   date: string;
-  img: string;
+  img: string | undefined;
 }) {
+  if (!img) return null;
+
   return (
     <div className={style.cardContainer}>
       <div className={style.textContainer}>

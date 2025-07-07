@@ -1,19 +1,26 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { StatusContext } from "../context/StatusContext.tsx";
 
 function useFetch<T>(
   url: string | null,
   token: string | null,
-  options?: RequestInit,
+  options: RequestInit,
 ) {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+
+  const context = useContext(StatusContext);
+  if (!context) {
+    throw new Error("useFetch must be used within a StatusContextProvider");
+  }
+  const { setError } = context;
 
   useEffect(() => {
     setData(null);
     setError(null);
     setLoading(false);
     if (!url || !token) return;
+    if (!options) return;
 
     setLoading(true);
 
@@ -34,9 +41,9 @@ function useFetch<T>(
     };
 
     fetchData();
-  }, [url, options, token]);
+  }, [url, options, token, setError]);
 
-  return { data, loading, error };
+  return { data, loading };
 }
 
 export default useFetch;

@@ -5,6 +5,7 @@ import httpStatusCodes from "../services/httpStatusCodes";
 
 async function search(req: Request, res: Response) {
   const query = bodyCheck(req, res);
+  if (!query) return;
   if (typeof query !== "string") {
     res.status(httpStatusCodes.badRequest).send("Query must be a string");
     return;
@@ -26,7 +27,7 @@ async function search(req: Request, res: Response) {
   const request = `fields name, game;
         search "${query}";
         limit 5;`;
-  const data = await postReq(res, req, url, request);
+  const data = await postReq(req, res, url, request);
   res.json(data);
 }
 

@@ -1,6 +1,7 @@
 import style from "./GameMeta.module.css";
 
-function MetaRating({ rating }: { rating: number }) {
+function MetaRating({ rating }: { rating: number | undefined }) {
+  if (!rating) return null;
   const stars = Math.round(rating / 20);
 
   return (

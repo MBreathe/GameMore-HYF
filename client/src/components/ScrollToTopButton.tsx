@@ -29,7 +29,7 @@ function ScrollToTopButton() {
         onClick={scrollToTop}
         style={{
           position: "fixed",
-          bottom: "6rem",
+          bottom: "2rem",
           right: "2rem",
           zIndex: 1,
         }}

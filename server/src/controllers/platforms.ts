@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import postReq from "./postReq";
 import bodyCheck from "../utils/bodyCheck";
-import isNumberOrArrayOfNumbers from "../utils/isNumberOrArrayOfNumbers";
 
 type PlatformsObj = {
   id: number;
@@ -10,18 +9,14 @@ type PlatformsObj = {
 
 async function platforms(req: Request, res: Response) {
   const query = bodyCheck(req, res);
-  if (!isNumberOrArrayOfNumbers(query)) {
-    res.status(400).send("Query must be a number or an array of numbers");
-    return;
-  }
+  if (!query) return;
 
   const url = "https://api.igdb.com/v4/platforms";
 
-  const filteredQuery = req.body.query.toString();
   const request = `fields abbreviation;
-        where id = (${filteredQuery});`;
+        where id = (${query.toString()});`;
 
-  const data: PlatformsObj[] = await postReq(res, req, url, request);
+  const data: PlatformsObj[] = await postReq(req, res, url, request);
   const filteredData = data.map((obj) => obj.abbreviation).join(", ");
   res.json(filteredData);
 }

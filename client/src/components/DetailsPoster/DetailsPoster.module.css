@@ -1,0 +1,10 @@
+.wrapper {
+  position: relative;
+  margin: 0 0 1rem 1rem;
+  border: 2px solid var(--text-color);
+}
+.poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

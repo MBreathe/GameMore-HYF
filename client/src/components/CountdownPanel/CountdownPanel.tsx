@@ -17,7 +17,7 @@ function CountdownPanel() {
       "CountdownPanel must be used within a StatusContextProvider",
     );
   }
-  const { token } = context;
+  const { token, error } = context;
 
   const options = useMemo(
     () => ({
@@ -30,7 +30,7 @@ function CountdownPanel() {
     [token],
   );
 
-  const { data, loading, error } = useFetch<AnticipatedGame[]>(
+  const { data, loading } = useFetch<AnticipatedGame[]>(
     "http://localhost:3000/api/games/anticipated",
     token,
     options,
@@ -44,7 +44,7 @@ function CountdownPanel() {
       {data &&
         data.map((game) => {
           return (
-            <div key={game.id}>
+            <div key={game.id} className={style.cardWrapper}>
               <Link to={`/games/${game.id}`}>
                 <CountdownCard
                   text={game.name}
