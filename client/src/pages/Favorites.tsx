@@ -20,7 +20,14 @@ function Favorites() {
     <div>
       {error && <ErrorBox error={error} />}
       <Title text="Favorites" />
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "1rem",
+          marginBottom: "5rem",
+        }}
+      >
         {favorite.length === 0 ? (
           <p
             className="roboto-italic"

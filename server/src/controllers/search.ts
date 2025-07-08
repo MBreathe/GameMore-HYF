@@ -26,7 +26,7 @@ async function search(req: Request, res: Response) {
   const url = "https://api.igdb.com/v4/search";
   const request = `fields name, game;
         search "${query}";
-        limit 5;`;
+        limit 10;`;
   const data = await postReq(req, res, url, request);
   res.json(data);
 }

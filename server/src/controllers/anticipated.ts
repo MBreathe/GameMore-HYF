@@ -18,15 +18,11 @@ async function anticipated(req: Request, res: Response) {
   const query = bodyCheck(req, res);
   if (!query) return;
   if (typeof query !== "number") {
-    res.status(httpStatusCodes.badRequest).send("Query must be a number");
-    return;
-  }
-  if (query > 10) {
-    res.status(httpStatusCodes.badRequest).send("Query must be less than 10");
+    res.status(httpStatusCodes.badRequest).json("Query must be a number");
     return;
   }
   if (query < 2) {
-    res.status(httpStatusCodes.badRequest).send("Query must be greater than 2");
+    res.status(httpStatusCodes.badRequest).json("Query must be greater than 2");
     return;
   }
 

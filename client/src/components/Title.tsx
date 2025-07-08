@@ -1,6 +1,4 @@
-function Title({ text }: { text: string | undefined }) {
-  if (!text) return null;
-
+function Title({ text }: { text: string }) {
   return (
     <h1
       className="inter-bold"

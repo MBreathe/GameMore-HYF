@@ -28,12 +28,12 @@ function useFetch<T>(
       try {
         const response = await fetch(url, options);
         if (!response.ok) {
-          const error = response.statusText || `Error: ${response.status}`;
+          const error = await response.text();
           return setError(error);
         }
         setData(await response.json());
       } catch (e) {
-        setError(e instanceof Error ? e.message : String(e));
+        setError(typeof e === "string" ? e : "Error: Unknown");
         setData(null);
       } finally {
         setLoading(false);

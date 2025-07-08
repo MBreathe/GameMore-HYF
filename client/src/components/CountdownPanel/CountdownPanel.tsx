@@ -25,7 +25,7 @@ function CountdownPanel() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ token: token, query: 6 }),
+      body: JSON.stringify({ token: token, query: 10 }),
     }),
     [token],
   );

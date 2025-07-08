@@ -1,6 +1,6 @@
 .wrapper {
   position: relative;
-  width: 20%;
+  width: 20rem;
   border: 2px solid var(--text-color);
 }
 .wrapper:hover .tag {

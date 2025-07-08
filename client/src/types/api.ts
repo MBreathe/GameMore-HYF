@@ -24,7 +24,7 @@ export type SearchGame = {
 };
 export type MetaGame = {
   rating: number | undefined;
-  releaseDate: string | null;
+  releaseDate: string | undefined | null;
   genre: number[] | undefined;
   platform: number[] | undefined;
 };

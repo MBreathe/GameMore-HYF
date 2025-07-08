@@ -2,14 +2,12 @@ import { useParams } from "react-router-dom";
 import { useEffect, useContext, useMemo, useState } from "react";
 import { StatusContext } from "../context/StatusContext.tsx";
 import Title from "../components/Title.tsx";
-import GameMeta from "../components/GameMeta/GameMeta.tsx";
-import { date } from "../utils/dateCalc.ts";
 import useFetch from "../hooks/useFetch.ts";
 import fetcher from "../utils/fetcher.ts";
 import Loading from "../components/Loading/Loading.tsx";
 import ErrorBox from "../components/ErrorBox/ErrorBox.tsx";
 import type { DetailsGame } from "../types/api.ts";
-import DetailsPoster from "../components/DetailsPoster/DetailsPoster.tsx";
+import Details from "../components/Details/Details.tsx";
 
 function GameDetails() {
   const { id } = useParams();
@@ -59,32 +57,13 @@ function GameDetails() {
   );
 
   if (loading) return <Loading />;
+  if (!details) return null;
 
   return (
     <>
       {error || authError ? <ErrorBox error={error || authError} /> : null}
-      <Title text={details?.name} />
-      <div style={{ display: "flex", gap: "1rem" }}>
-        <div>
-          <GameMeta
-            rating={details?.rating}
-            releaseDate={date(details?.releaseDate)}
-            genre={details?.genres}
-            platform={details?.platforms}
-          />
-          <p
-            className="roboto-normal"
-            style={{
-              borderTop: "2px solid var(--text-color)",
-              margin: "2rem 2rem 2rem 0",
-              paddingTop: "1rem",
-            }}
-          >
-            {details?.summary}
-          </p>
-        </div>
-        <DetailsPoster coverID={details?.cover} />
-      </div>
+      <Title text={details.name} />
+      <Details details={details} />
     </>
   );
 }

@@ -14,6 +14,7 @@
   border: 2px solid var(--text-color);
   padding: 0.5rem 1rem;
   width: 100%;
+  overflow: hidden;
 }
 .suggestionsContainer li {
   list-style: none;

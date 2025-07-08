@@ -5,7 +5,6 @@ import { StatusContext } from "../../context/StatusContext.tsx";
 import { useContext, useEffect, useMemo, useState } from "react";
 import ErrorBox from "../ErrorBox/ErrorBox.tsx";
 import Loading from "../Loading/Loading.tsx";
-import style from "./GameMeta.module.css";
 import type { MetaGame } from "../../types/api.ts";
 
 function GameMeta({ rating, releaseDate, genre, platform }: MetaGame) {
@@ -67,7 +66,7 @@ function GameMeta({ rating, releaseDate, genre, platform }: MetaGame) {
   if (genresLoading || platformsLoading) return <Loading />;
 
   return (
-    <div className={style.wrapper}>
+    <div>
       <MetaRating rating={rating} />
       <MetaData title="Release Date" value={releaseDate} />
       <MetaData title="Genre" value={genreString} />

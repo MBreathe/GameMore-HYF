@@ -6,6 +6,7 @@ import Loading from "../Loading/Loading.tsx";
 import type { DetailsGame, PosterGame } from "../../types/api.ts";
 import imgUrl from "../../utils/imgUrl.ts";
 import style from "./FavGame.module.css";
+import { Link } from "react-router-dom";
 
 function FavGame({ gameID }: { gameID: number }) {
   const context = useContext(StatusContext);
@@ -56,12 +57,14 @@ function FavGame({ gameID }: { gameID: number }) {
     <div className={style.wrapper}>
       {loadingPoster || (loadingDetails && <Loading />)}
       <FavButton game={gameID} />
-      <img
-        className={style.img}
-        src={imgUrl(poster?.url, "t_1080p")}
-        alt="poster"
-      />
-      <h2 className={"roboto-normal " + style.tag}>{details?.name}</h2>
+      <Link to={`/games/${gameID}`}>
+        <img
+          className={style.img}
+          src={imgUrl(poster?.url, "t_1080p")}
+          alt="poster"
+        />
+        <h2 className={"roboto-normal " + style.tag}>{details?.name}</h2>
+      </Link>
     </div>
   );
 }
