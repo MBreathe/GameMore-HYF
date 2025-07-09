@@ -25,11 +25,12 @@ list of favorites for easy access to the games they’re most excited about.
 ```
 must-have:
     homepage with most anticipated game releases
-    searchbar and top-rated games
+    searchbar
     favorites page with user hand picked games
     detailed page for each video game
 
 should-have:
+    top rated games
     capability to add release dates to Google Calendar
     animations
 
